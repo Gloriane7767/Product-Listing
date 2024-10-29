@@ -1,42 +1,64 @@
-// Selecting elements
-let header = document.getElementById("header");
-let paragraphs = document.getElementsByClassName("description");
-let listItems = document.getElementsByTagName("li");
-let firstItem = document.querySelector("#itemList li");
-let allItems = document.querySelectorAll("#itemList li");
+// Array of product objects.
+const productList = [
+  {
+    id: 1,
+    name: "WD 2TB Elements Portable External Hard Drive - USB 3.0",
+    description:
+      "USB 3.0 and USB 2.0 Compatibility. Fast data transfers. Improve PC Performance. High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user's hardware configuration and operating system.",
+    price: "$64",
+    image: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+  },
+  {
+    id: 2,
+    name: "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
+    description:
+      "Easy upgrade for faster boot up, shutdown, application load and response. Boosts burst write performance, making it ideal for typical PC workloads. Read/write speeds of up to 535MB/s/450MB/s.",
+    price: "$109",
+    image: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+  },
+  // Add more products as needed
+];
 
-console.log(header); // <h1 id="header">Welcome to My Webpage</h1>
-console.log(paragraphs); // HTMLCollection of <p class="description"> elements
-console.log(listItems); // HTMLCollection of <li> elements
-console.log(firstItem); // <li>Item 1</li>
-console.log(allItems); // NodeList of <li> elements
-// Changing content
-header.innerHTML = "Hello, World!";
-paragraphs[0].textContent = "This is an updated paragraph.";
-firstItem.innerText = "Updated Item 1";
+// Function to generate and display product elements
+function displayProducts() {
+  // Select the container where products will be displayed
+  const productContainer = document.querySelector(".products--list");
 
-// Modifying styles
-header.style.color = "blue";
-header.style.fontSize = "2em";
-header.style.textAlign = "center";
+  // Loop through each product and create HTML element
+  productList.forEach((product) => {
+    const productItem = document.createElement("li");
+    productItem.innerHTML = `
+      <div class="product card">
+        <img
+          alt="This is an image"
+          src="${product.image}"
+          class="product--image"
+        />
+        <div class="product--text">
+          <h1 class="product--name">${product.name}</h1>
+          <p class="product--description">${product.description}</p>
+          <button class="product--buy">Buy Now</button>
+          <p class="product--price">${product.price}</p>
+        </div>
+      </div>
+    `;
+    productContainer.appendChild(productItem);
+  });
+}
 
-paragraphs[0].style.backgroundColor = "lightgray";
+document.addEventListener("DOMContentLoaded", function () {
+  const productForm = document.getElementById("productForm");
 
-// Creating a new element
-let newItem = document.createElement("li");
-newItem.textContent = "New Item";
+  productForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent page reload on form submit
 
-// Adding the new element to the list
-let itemList = document.getElementById("itemList");
-itemList.appendChild(newItem);
+    const productName = document.getElementById("productName").value;
+    const productPrice = document.getElementById("productPrice").value;
 
-// Removing an element
-let firstItem = itemList.firstElementChild;
-itemList.removeChild(firstItem);
+    // Display the values or use them for further processing
+    console.log("Product Name:", productName);
+    console.log("Product Price:", productPrice);
 
-// Adding an event listener
-let button = document.getElementById("changeButton");
-button.addEventListener("click", function ("1") {
-  header.textContent = "Content Changed!";
-  itemList.innerHTML += "<li>Another New Item</li>";
+    // Optionally, you could add the product to a list or display it on the page
+  });
 });

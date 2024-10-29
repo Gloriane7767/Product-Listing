@@ -1,17 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>My Webpage</title>
-  </head>
-  <body>
-    <h1 id="header">Welcome to My Webpage</h1>
-    <p class="description">This is a simple paragraph.</p>
-    <ul id="itemList">
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-    <button id="changeButton">Change Content</button>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Option Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+  </head>
+
+  <body>
+    <header class="site--bar">
+      <nav class="navbar">
+        <div class="navbar--logo">
+          <a href="./index.html">R-Commerce</a>
+        </div>
+        <ul class="navbar--menu">
+          <li class="navbar--search-cart">
+            <input type="text" placeholder="Search..." class="navbar--search" />
+          </li>
+          <li id="cartLink"><a href="#shop">Cart</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="root">
+      <section class="site--hero">
+        <div class="hero--content">
+          <h1>Ready to Shop</h1>
+          <p>Discover the latest trends and find your perfect look.</p>
+          <a href="#products">
+            <button class="hero--button">Start Shopping</button>
+          </a>
+        </div>
+      </section>
+
+      <section class="products">
+        <h3 class="products--title" id="products">All the products</h3>
+        <div class="products--sorting">
+          <label for="sort">Sort by price:</label>
+          <select id="sort" class="sort--dropdown">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
+
+        <!-- Product Form (Outside of Product List) -->
+        <section class="add-product">
+          <form id="productForm">
+            <label for="productName">Product Name:</label>
+            <input
+              type="text"
+              id="productName"
+              name="productName"
+              placeholder="Enter product name"
+              required
+            />
+
+            <label for="productPrice">Product Price:</label>
+            <input
+              type="text"
+              id="productPrice"
+              name="productPrice"
+              placeholder="Enter product price"
+              required
+            />
+
+            <button type="submit">Add Product</button>
+          </form>
+        </section>
+
+        <!-- Product List (Separate from Form) -->
+
+        <ul class="products--list">
+          <!-- Products will be dynamically injected here by JavaScript -->
+        </ul>
+      </section>
+    </main>
+
+    <div id="modalCart" class="modal-cart">
+      <div class="modal-cart-content">
+        <span class="modal-cart-close">&times;</span>
+        <h1>Cart</h1>
+        <p>...</p>
+      </div>
+    </div>
+
+    <footer class="more">
+      <section>
+        <div class="more--credits">
+          <a href="./index.html" target="_blank">R-Commerce</a>
+          <p class="more--rights">(c) 2024</p>
+        </div>
+      </section>
+    </footer>
   </body>
-</html
+</html>
